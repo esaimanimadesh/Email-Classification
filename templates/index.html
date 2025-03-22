@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Spam Detector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+        .email-box {
+            width: 60%;
+            margin: 10px auto;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .spam {
+            color: red;
+            font-weight: bold;
+        }
+        .not-spam {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Email Spam Detector</h1>
+    {% for email in email_data %}
+        <div class="email-box">
+            <p><strong>Status:</strong> 
+                <span class="{% if email.label == 'Spam 🚨' %}spam{% else %}not-spam{% endif %}">
+                    {{ email.label }}
+                </span>
+            </p>
+            <p><strong>Email:</strong> {{ email.email }}</p>
+        </div>
+    {% endfor %}
+</body>
+</html>
